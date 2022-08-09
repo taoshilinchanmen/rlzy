@@ -36,7 +36,16 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    'dev-api': {
+      target: 'http://ihrm-java.itheima.net',
+      changeOrigin: true,
+      // 是否开启跨域
+      pathRewrite: {
+        // 重命名
+        '^/dev-api': '/api'
+        // 将约定俗成的dev-api重新命名为/api
+      }
+  }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
